@@ -68,3 +68,7 @@ body{
 .box input[type = "submit"]:hover{
   background: #FF0000;
 }
+
+.flashes h3{
+  color:white;
+}

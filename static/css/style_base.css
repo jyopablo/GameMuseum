@@ -1,0 +1,13 @@
+.flashes {
+	background-color: rgba(162,207,255,0.7);
+	border:2px solid;
+	border-color: rgba(162,207,255,0.8);
+	text-align: center;
+	font-weight: bold;
+	font-family: sans-serif;
+	color:#3308AE;
+}
+
+.flashes ul li{
+	list-style: none;
+}
