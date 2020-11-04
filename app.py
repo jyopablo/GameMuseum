@@ -1,6 +1,8 @@
 from flask import  Flask 
 from flask import render_template
 from flask import request,redirect,url_for
+from werkzeug import secure_filename
+import os
 
 id=[0]
 names=['Usuario']
@@ -87,6 +89,12 @@ def admin():
 @app.route('/index2')
 def index2():
    return render_template('index2.html')    
+
+
+@app.route('/carga_masiva')
+def carga_masiva():
+      return render_template('carga_masiva.html')    
+
 
 if __name__=='__main__':
     app.run(threaded=True,debug=True,port=8000)	
