@@ -12,9 +12,17 @@ header{
 }
 
 header form{
-  margin-left: 300px;
+  margin-left: 400px;
 }
 
+.sesion{
+  margin-left: 250px;
+}
+
+header a{
+  text-decoration: none;
+  color: white;
+}
 
 header img{
 	width: 200px;
@@ -51,7 +59,7 @@ header input[type="text"]{
   border:3px solid #3498db;
   color: white;
   font-size: 20px;
-  width: 300px;
+  width: 65px;
   height: 50px;
   outline: none;
   transition: 0.25s;
@@ -59,10 +67,11 @@ header input[type="text"]{
 
 header input[type = "text"]:focus{
  border-color: #FF0000;
+ width: 300px;
 }
 
 
-header button[type="submit"]{
+header button[type="submit"],button[type="button"]{
   border:0;
   border-radius: 100px;
   background:none;
@@ -70,13 +79,13 @@ header button[type="submit"]{
   font-size: 20px;
   color: white;
   width: 100px;
-  height: 100px;
+  height: 50px;
   outline: none;
   transition: 0.25s;
   cursor: pointer;
   margin: auto;
 }
 
-header button[type = "submit"]:hover{
+header button[type = "submit"]:hover,button[type="button"]:hover{
  background: #FF0000;
 }

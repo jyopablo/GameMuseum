@@ -22,10 +22,12 @@
       <form>
         <input type="text" name="search" placeholder="search">
         <button type="submit" name="submit">search</button>
-      </form>  
+        </form>  
       </td>
       <td>
-        {{NombreUsuairio}}
+      <article class="sesion">
+      <button type="button"><a href="/">Sing of</a></button>
+      </article>
       </td>
     </tr>
   </table>
@@ -35,7 +37,7 @@
     <ul>
       <li><a href="catalogo">Catalogo de Videojuegos</a></li>
       <li><a href="biblioteca">Mi Bliblioteca</a></li>
-      <li><a href="perfil">Perfil</a></li>
+      <li><a href="perfil_index2">Perfil</a></li>
     </ul>
   </nav>
 
@@ -110,17 +112,24 @@
   <tr>
     <td>
     <img src="{{url_for('static', filename='img/facebook.png')}}">  
-    </td>
-    <td>
-    <img src="{{url_for('static', filename='img/instagram.png')}}">  
-    </td>
-    <td>
+    <img src="{{url_for('static', filename='img/instagram.png')}}">
     <img src="{{url_for('static', filename='img/snapchat.png')}}">  
-    </td>
-    <td>
-    <img src="{{url_for('static', filename='img/twitter.png')}}">  
+    <img src="{{url_for('static', filename='img/twitter.png')}}"> 
     </td>
   </tr>  
+  <tr>
+    <td>
+      <img src="{{url_for('static', filename='img/whatsapp.png')}}">
+      +502 2419-0122
+    </td>
+    
+  </tr>
+  <tr>
+    <td class="gmail">
+      <a href="https://mail.google.com"><img src="{{url_for('static', filename='img/gmail.png')}}"></a>
+      gamemuseum@gmail.com
+    </td>
+  </tr>
   </table>
 </footer>
 

@@ -1,0 +1,85 @@
+{% extends 'base/base.html'%}
+
+{% block title %} perfil {% endblock %}  
+  {% block css%}
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style_perfil_index2.css')}}">
+  {% endblock %}
+   
+
+  {% block js%}
+    
+  {% endblock %}
+
+
+{% block content%}
+<header>
+  <table>
+    <tr>
+      <td>
+       <img src="{{url_for('static', filename='img/Logo.png')}}" >  
+      </td>
+      <td>
+      <form>
+        <input type="text" name="search" placeholder="search">
+        <button type="submit" name="submit">search</button>
+        </form>  
+      </td>
+      <td>
+      <article class="sesion">
+      <button type="button"><a href="/">Sing of</a></button>
+      </article>
+      </td>
+    </tr>
+  </table>
+</header>
+
+<nav class="navigation">
+    <ul>
+      <li><a href="catalogo">Catalogo de Videojuegos</a></li>
+      <li><a href="biblioteca">Mi Bliblioteca</a></li>
+      <li><a href="perfil_index2">Perfil</a></li>
+    </ul>
+  </nav>
+
+<article>
+  <form class="box" action="" method="post">
+  <h1>Perfil</h1>
+  <input type="text" name="name" placeholder="name" required>
+  <input type="text" name="surname" placeholder="surname" required><br>
+  <article id="user">
+  <input type="text" name="user" placeholder="user" required><br>
+  </article>
+  <input type="password" name="password" placeholder="Password" required >
+  <input type="password" name="confirmpassword" placeholder="Confirm Password" required>
+  <input type="submit" name="Login" value="register" id="btnSumit">
+</form>
+</article>
+
+
+<footer>
+  <table>
+  <tr>
+    <td>
+    <img src="{{url_for('static', filename='img/facebook.png')}}">  
+    <img src="{{url_for('static', filename='img/instagram.png')}}">
+    <img src="{{url_for('static', filename='img/snapchat.png')}}">  
+    <img src="{{url_for('static', filename='img/twitter.png')}}"> 
+    </td>
+  </tr>  
+  <tr>
+    <td>
+      <img src="{{url_for('static', filename='img/whatsapp.png')}}">
+      +502 2419-0122
+    </td>
+    
+  </tr>
+  <tr>
+    <td class="gmail">
+      <a href="https://mail.google.com"><img src="{{url_for('static', filename='img/gmail.png')}}"></a>
+      gamemuseum@gmail.com
+    </td>
+  </tr>
+  </table>
+</footer>
+
+{% endblock %}

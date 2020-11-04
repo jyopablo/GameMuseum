@@ -13,7 +13,7 @@ paswords=['admin']
 id2=[]
 name=[]
 Anio=[]
-Precio=[]
+Precio=[] 
 Categoria=[]
 Foto=[]
 Banner=[]
@@ -108,6 +108,10 @@ def admin():
 @app.route('/index2')
 def index2():
    return render_template('index2.html')    
+
+@app.route('/perfil_index2')
+def perfil_index2():
+   return render_template('perfil_index2.html')
 
 
 @app.route('/carga_masiva')
