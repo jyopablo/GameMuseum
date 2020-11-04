@@ -1,0 +1,131 @@
+body{
+	  background-color: black;
+	  margin: 0;
+    padding: 0;
+    font-family: georgia, times, serif;
+    font-size: 1.2rem;
+    line-height: 1.6em;
+}
+
+header{
+    background-color: #B10101;
+}
+
+header form{
+  margin-left: 300px;
+}
+
+
+header img{
+	width: 200px;
+  height: 200px;
+}
+
+.navigation ul li  {
+     margin-left: 5rem;
+     display: inline-block;
+}
+
+nav{
+  background-color: #3498db;
+  margin-top: 0px;
+}
+
+nav a:hover{
+  background-color: red;
+  border-radius: 50px;
+}
+
+nav ul{
+  margin-left: 48%;
+}
+
+
+.navigation a{
+  text-decoration: none;
+  color: white;
+}
+
+header input[type="text"]{
+  border:0;
+  border-radius: 50px;
+  background:none;
+  border:3px solid #3498db;
+  color: white;
+  font-size: 20px;
+  width: 300px;
+  height: 50px;
+  outline: none;
+  transition: 0.25s;
+}
+
+header input[type = "text"]:focus{
+ border-color: #FF0000;
+}
+
+
+header button[type="submit"]{
+  border:0;
+  border-radius: 100px;
+  background:none;
+  border:3px solid #FF0000;
+  font-size: 20px;
+  color: white;
+  width: 100px;
+  height: 100px;
+  outline: none;
+  transition: 0.25s;
+  cursor: pointer;
+  margin: auto;
+}
+
+header button[type = "submit"]:hover{
+ background: #FF0000;
+}
+
+
+#avatar table{
+   margin-left: 10rem;
+}
+
+#catalogo img{
+  width:200px;
+  height: 300px; 
+  margin-left:65px;
+  margin-top: 10px;
+  border:2px solid;
+  border-color: white;
+}
+
+#catalogo table{
+  border:2px solid;
+  border-color:black;
+}
+
+#catalogo td{
+  border:2px solid;
+  border-color: black;
+}
+
+.producto {
+  margin-right: 100px;
+  margin-left: 100px;
+  text-align: center;
+  color: white;
+}
+
+.precio {
+  text-align: center;
+  color: red;
+}
+
+footer{
+  background-color: #B10101;
+}
+
+footer img{
+  width: 100px;
+  height: 100px;
+}
+
+

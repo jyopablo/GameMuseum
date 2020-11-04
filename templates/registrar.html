@@ -1,0 +1,31 @@
+{% extends 'base/base.html'%}
+{% block title %} registrar {% endblock %}  
+  {% block css%}
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style_registrar.css')}}">
+  {% endblock %}
+  {% block js%}
+    
+  {% endblock %}
+
+   {% block content%}
+<form class="box" action="" method="post">
+  <h1>Crear Cuenta</h1>
+  <input type="text" name="name" placeholder="name" required>
+  <input type="text" name="surname" placeholder="surname" required><br>
+  <article id="user">
+  <input type="text" name="user" placeholder="user" required><br>
+  </article>
+  <input type="password" name="password" placeholder="Password" required >
+  <input type="password" name="confirmpassword" placeholder="Confirm Password" required>
+  <input type="submit" name="Login" value="register" id="btnSumit">
+</form>
+
+
+<script>
+  $("#btnSumit").click(function(e){
+      alert("Registered user ")
+     e.preventDefault
+  })
+</script>
+
+   {% endblock%}

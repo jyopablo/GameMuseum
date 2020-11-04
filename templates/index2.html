@@ -1,0 +1,127 @@
+{% extends 'base/base.html'%}
+
+{% block title %} index2 {% endblock %}  
+  {% block css%}
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style_index2.css')}}">
+  {% endblock %}
+   
+
+  {% block js%}
+    
+  {% endblock %}
+
+
+{% block content%}
+<header>
+  <table>
+    <tr>
+      <td>
+       <img src="{{url_for('static', filename='img/Logo.png')}}" >  
+      </td>
+      <td>
+      <form>
+        <input type="text" name="search" placeholder="search">
+        <button type="submit" name="submit">search</button>
+      </form>  
+      </td>
+      <td>
+        {{NombreUsuairio}}
+      </td>
+    </tr>
+  </table>
+</header>
+
+<nav class="navigation">
+    <ul>
+      <li><a href="catalogo">Catalogo de Videojuegos</a></li>
+      <li><a href="biblioteca">Mi Bliblioteca</a></li>
+      <li><a href="perfil">Perfil</a></li>
+    </ul>
+  </nav>
+
+<article id="avatar">
+<table>
+  <tr>
+    <td>
+      <img src="https://i.pinimg.com/originals/76/fc/5e/76fc5ecb8b002ccfe55d091460804ca3.gif">
+    </td>
+    <td>
+      <img src="{{url_for('static', filename='img/avatar.gif')}}">
+    </td>
+    <td>
+      <img src="https://i.pinimg.com/originals/76/fc/5e/76fc5ecb8b002ccfe55d091460804ca3.gif">
+    </td>
+  </tr>
+</table>  
+</article>
+
+<article id="catalogo">
+  <table>
+    <tr>
+        <td>
+        <img src="https://cdn.game.tv/game-tv-content/images_3/0e435f81ec8571c9e6a9a9753bb55ad4/GameTile.jpg">
+         <p class="producto">FIFA 20</p>
+        <p class="precio">Q450.00</p> 
+        </td> 
+        <td>
+        <img src="https://s3.gaming-cdn.com/images/products/2468/orig/call-of-duty-black-ops-4-cover.jpg"> 
+        <p class="producto">CALL OF DUTY</p>
+        <p class="precio">Q450.00</p>
+        </td> 
+        <td> 
+        <img src="https://www.tonica.la/__export/1587577404308/sites/debate/img/2020/04/22/fortnite-portada.jpg_423682103.jpg"> 
+         <p class="producto">FORNITE</p>
+        <p class="precio">Q450.00</p>
+        </td> 
+        <td> 
+        <img src="https://i.pinimg.com/originals/64/a2/8c/64a28c25e19874be05e7c1926340f999.jpg">  
+         <p class="producto">MORTAL KOMBAT</p>
+        <p class="precio">Q450.00</p>
+        </td> 
+    </tr>
+    <tr>
+        <td >
+        <img src="https://www.rockstargames.com/V/img/global/order/GTAV-PC.jpg"> 
+         <p class="producto">GRAND THEFT AUTO V</p>
+        <p class="precio">Q450.00</p>
+        </td> 
+        <td>
+        <img src="https://media.contentapi.ea.com/content/dam/need-for-speed/images/2017/09/nfsppc2dpftfront-us-ca.jpg"> 
+         <p class="producto">NEED FOR SPEED PAYBACK</p>
+        <p class="precio">Q450.00</p>
+        </td> 
+        <td> 
+        <img src="https://s1.gaming-cdn.com/images/products/2214/orig/hello-neighbor-cover.jpg"> 
+        <p class="producto">HELLO NEIGHBOR</p>
+        <p class="precio">Q450.00</p>
+        </td> 
+        <td> 
+        <img src="https://as.com/meristation/imagenes/2018/07/27/game_cover/474765281532683315.jpg">  
+         <p class="producto">NBA LIVE 19</p>
+         <p class="precio">Q450.00</p>
+        </td> 
+    </tr>
+  </table>
+</article>
+
+
+<footer>
+  <table>
+  <tr>
+    <td>
+    <img src="{{url_for('static', filename='img/facebook.png')}}">  
+    </td>
+    <td>
+    <img src="{{url_for('static', filename='img/instagram.png')}}">  
+    </td>
+    <td>
+    <img src="{{url_for('static', filename='img/snapchat.png')}}">  
+    </td>
+    <td>
+    <img src="{{url_for('static', filename='img/twitter.png')}}">  
+    </td>
+  </tr>  
+  </table>
+</footer>
+
+{% endblock %}

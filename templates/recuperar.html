@@ -1,0 +1,20 @@
+{% extends 'base/base.html'%}
+
+{% block title %} recover {% endblock %}  
+  {% block css%}
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style_recuperar.css')}}">
+  {% endblock %}
+   
+
+  {% block js%}
+    
+  {% endblock %}
+
+
+{% block content%}
+<form class="box" action="" method="post">
+  <h1>Recover Password</h1>
+  <input type="text" name="username" placeholder="Username" required >
+  <input type="submit" name="Recover" value="Recover">
+</form>   
+{% endblock %}
