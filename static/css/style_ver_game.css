@@ -2,7 +2,7 @@ body{
 	  background-color: black;
 	  margin: 0;
     padding: 0;
-    font-family: georgia, times, serif;
+    font-family: sans-serif;
     font-size: 1.2rem;
     line-height: 1.6em;
 }
@@ -12,9 +12,17 @@ header{
 }
 
 header form{
-  margin-left: 300px;
+  margin-left: 400px;
 }
 
+.sesion{
+  margin-left: 250px;
+}
+
+header a{
+  text-decoration: none;
+  color: white;
+}
 
 header img{
 	width: 200px;
@@ -35,13 +43,6 @@ nav{
 nav a:hover{
   background-color: red;
   border-radius: 50px;
-}
-
-
-
-.navigation a{
-  text-decoration: none;
-  color: white;
 }
 
 body{
@@ -136,28 +137,26 @@ header button[type = "submit"]:hover,button[type="button"]:hover{
  background: #FF0000;
 }
 
-.box{
-  color: white;
-  border-color: #00FF78 #0096FF #FFF600 #FF00F6;
-  border-width: 2px;
-  border-style: solid;;
-  border-top-left-radius: 50px;
-  border-top-right-radius: 100px;
-  border-bottom-left-radius: 100px;
-  border-bottom-right-radius: 50px; 
-  width: 300px;
-  padding: 40px;
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  background: #191919;
-  text-align: left;
+.diseño table tr td{
+  border: 2px solid;
+  border-color: white;
 }
 
-.box h1{
+.diseño{
   color: white;
-  text-transform: uppercase;
-  font-weight: 500;
 }
 
+
+footer{
+  background-color: #B10101;
+  margin-top: 55%;
+}
+
+footer img{
+  width: 42px;
+  height: 40px;
+}
+
+.gmail img{
+  height: 30px;
+}

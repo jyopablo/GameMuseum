@@ -1,8 +1,8 @@
 {% extends 'base/base.html'%}
 
-{% block title %} perfil {% endblock %}  
+{% block title %} admin {% endblock %}  
   {% block css%}
-<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style_perfil_index2.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style_crud.css')}}">
   {% endblock %}
    
 
@@ -19,10 +19,10 @@
        <img src="{{url_for('static', filename='img/Logo.png')}}" >  
       </td>
       <td>
-      <form>
+      <form method="post">
         <input type="text" name="search" placeholder="search">
         <button type="submit" name="submit">search</button>
-        </form>  
+      </form>  
       </td>
       <td>
       <article class="sesion">
@@ -37,24 +37,23 @@
     <ul>
       <li><a href="catalogo">Catalogo de Videojuegos</a></li>
       <li><a href="biblioteca">Mi Bliblioteca</a></li>
-      <li><a href="perfil_index2">Perfil</a></li>
+      <li><a href="perfil_admin">Perfil</a></li>
+      <li><a href="carga_masiva">Carga Masiva</a></li>
+      <li><a href="crud">CRUD de Videojuegos</a></li>
+      <li><a href="perfil">Generar Reportes</a></li>
+      <li><a href="perfil">Crear Usuario</a></li>
     </ul>
   </nav>
 
-<article>
+  <article>
   <form class="box" action="" method="post">
-  <h1>Perfil</h1>
-  <input type="text" name="name" placeholder="name" required value={{name_index2}}>
-  <input type="text" name="surname" placeholder="surname" required value={{surname_index2}}><br>
-  <article id="user">
-  <input type="text" name="user" placeholder="user" required value={{user_index2}} readonly><br>
-  </article>
-  <input type="password" name="password" placeholder="password" required  value={{pasword_index2}}>
-  <input type="password" name="confirmpassword" placeholder="confirmpassword" required value={{pasword_index2}}>
-  <input type="submit" name="Login" value="To update" id="btnSumit">
-</form>
+  <h1>CRUD DE VIDEO JUEGOS</h1>
+  <button type="button"><a href="crear_game">Create video game</a></button>
+  <button type="button"><a href="ver_game">Watch video game</a></button>
+  <button type="button"><a href="">Modify video game</a></button>
+  <button type="button"><a href="">Delete video game</a></button>
+</form>   
 </article>
-
 
 <footer>
   <table>
@@ -80,5 +79,6 @@
   </tr>
   </table>
 </footer>
+
 
 {% endblock %}
