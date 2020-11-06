@@ -3,6 +3,7 @@ from flask import render_template,flash
 from flask import request,redirect,url_for
 from werkzeug import secure_filename
 import os
+import csv
 
 id1=[0]
 names=['Usuario']
@@ -23,11 +24,12 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER']="./static/archivos"
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
-
+#_______________________________________________Pagina principal o index___________________________________________________
 @app.route('/')
 def index():
 	return render_template('index.html')
 
+#_________________________________________________________Login ___________________________________________________________
 @app.route('/login', methods=['GET','POST'])
 def login():
   try:
@@ -56,6 +58,7 @@ def login():
        flash('Incorrect User or Password')
        return render_template('login.html')
 
+#___________________________________________Registrar un usuario por su cuenta___________________________________________________
 @app.route('/registrar',methods=['GET','POST'])
 def registrar():
   try:
@@ -86,7 +89,7 @@ def registrar():
       return flash('User or Confirm of Password, Incorrect')  
       return render_template('registrar.html') 
 
-
+#_______________________________________________recuperar contraseña ___________________________________________________
 @app.route('/recuperar', methods=['GET','POST'])
 def recuperar():
   try:
@@ -103,16 +106,16 @@ def recuperar():
       return render_template('recuperar.html')
   except:
       return render_template('recuperar.html')
-
+#_______________________________________________Pagina logeada de un administrador___________________________________________________
 @app.route('/admin')
 def admin():
     return render_template('admin.html') 
-
-@app.route('/index2')
+#_______________________________________________Pagina logeada de un usuario___________________________________________________
+@app.route('/index2',methods=['GET','POST'])
 def index2():
    return render_template('index2.html')    
 
-
+#_____________________________________________________Perfil de un usuario_________-________________________________________
 @app.route('/perfil_index2',methods=['GET','POST'])
 def perfil_index2():
   try:
@@ -153,7 +156,7 @@ def perfil_index2():
       return render_template('perfil_index2.html',user_index2=user_perfil_index2,surname_index2=surname_perfil_index2,
       name_index2=name_perfil_index2,pasword_index2=pasword_perfil_inedex2) 
 
-
+#_______________________________________________Perfil de una de un administrador_______________________________________
 @app.route('/perfil_admin',methods=['GET','POST'])
 def perfil_admin():
   try:
@@ -198,7 +201,7 @@ def perfil_admin():
 def crud():
       return render_template('crud.html')
 
-#_______________________________________________crear un video juego 
+#_______________________________________________crear un video juego___________________________________________________
 @app.route("/crear_game", methods=["GET", "POST"])
 def crear_game():
     try:
@@ -210,7 +213,7 @@ def crear_game():
             url = request.form.get("url")
             banner = request.form.get("banner")
             description = request.form.get("description")
-            if (name != None and year != None and price != None and url != None and description != None):
+            if  name != None and year != None and price != None and url != None and description != None:
                 name_game.append(name)
                 anio_game.append(year)
                 precio_game.append(price)
@@ -218,21 +221,30 @@ def crear_game():
                 foto_game.append(url)
                 banner_game.append(banner)
                 descripcion_game.append(description)
-                ultimo=id2[-1]
-                id2.append(ultimo+1)
-                return flash("The video game has been created")
-                return redirect("crear_game.html")
+                if id2:
+                   verificar=True
+                else:	
+                   verificar=False
+
+                if verificar==True:   
+                   ultimo=id2[-1]
+                   id2.append(ultimo+1)
+                else:
+                   id2.append(0)
+                flash('The video game has been created')
+                return redirect(url_for('crud'))
             else:
                 return render_template("crear_game.html")
         else:    
              return render_template("crear_game.html")      
     except:
         return render_template("crear_game.html")
-
+#_____________________________________________________Ver video juego___________________________________________________
 @app.route('/ver_game')
 def ver_game():
-      return render_template('ver_game.html')     
-
+      return render_template('ver_game.html',id_game=id_ver,name=name_ver,anio=anio_ver,precio=precio_ver,category=category_ver,foto=foto_ver,
+	  banner=banner_ver,description=description_ver)     
+#_______________________________________________Carga masiva de video juegos____________________________________________
 @app.route('/carga_masiva')
 def carga_masiva():
       return render_template('carga_masiva.html')    
@@ -245,6 +257,63 @@ def uploader():
         filename = secure_filename(f.filename)
         f.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
         return "Archivo subido exitosamente"
+#_______________________________________________Buscar video juego_______________________________________________________
+@app.route('/buscar_game', methods=['GET','POST'])
+def buscar_game():
+	try:
+		if request.method=="POST":
+			search=request.form.get("search2")
+			verificar1=name_game.count(search)
+			global id_ver,name_ver,anio_ver,precio_ver,category_ver,foto_ver,banner_ver,description_ver
+			if verificar1 != 0:
+				posicion1=name_game.index(search)
+				id_ver=id1[posicion1]
+				name_ver=name_game[posicion1]
+				anio_ver=anio_game[posicion1]
+				precio_ver=precio_game[posicion1]
+				category_ver=categoria_game[posicion1]
+				foto_ver=foto_game[posicion1]
+				banner_ver=banner_game[posicion1]
+				description_ver=descripcion_game[posicion1]
+				return redirect('ver_game')
+			else:	
+				flash('The video game does not exist')
+				return render_template('buscar_game.html') 
+		else:          
+			return render_template('buscar_game.html') 
+	except:
+		return render_template('buscar_game.html')	
+#_______________________________________________Modificar video Game_______________________________________________________
+
+
+
+#_______________________________________________Eliminar video  Game_______________________________________________________
+@app.route('/buscar_game_dos', methods=['GET','POST'])
+def buscar_game_dos():
+	try:
+		if request.method=="POST":
+			search=request.form.get("search")
+			verificar=name_game.count(search)
+			global id_ver,name_ver,anio_ver,precio_ver,category_ver,foto_ver,banner_ver,description_ver
+			if verificar != 0:
+				posicion1=name_game.index(search)
+				id1.pop(posicion1)
+				name_game.pop(posicion1)
+				anio_game.pop(posicion1)
+				precio_game.pop(posicion1)
+				categoria_game.pop(posicion1)
+				foto_game.pop(posicion1)
+				banner_game.pop(posicion1)
+				descripcion_game.pop(posicion1)
+				flash('The video game removed')
+				return redirect('crud')
+			else:	
+				flash('The video game does not exist')
+				return render_template('buscar_game_dos.html') 
+		else:          
+			return render_template('buscar_game_dos.html') 
+	except:
+		return render_template('buscar_game_dos.html')
 
 
 

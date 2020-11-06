@@ -2,7 +2,7 @@ body{
 	  background-color: black;
 	  margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: georgia, times, serif;
     font-size: 1.2rem;
     line-height: 1.6em;
 }
@@ -12,17 +12,9 @@ header{
 }
 
 header form{
-  margin-left: 400px;
+  margin-left: 300px;
 }
 
-.sesion{
-  margin-left: 250px;
-}
-
-header a{
-  text-decoration: none;
-  color: white;
-}
 
 header img{
 	width: 200px;
@@ -43,6 +35,13 @@ nav{
 nav a:hover{
   background-color: red;
   border-radius: 50px;
+}
+
+
+
+.navigation a{
+  text-decoration: none;
+  color: white;
 }
 
 body{
@@ -137,59 +136,64 @@ header button[type = "submit"]:hover,button[type="button"]:hover{
  background: #FF0000;
 }
 
-
-.diseño{
+.box{
   color: white;
+  border-color: #00FF78 #0096FF #FFF600 #FF00F6;
+  border-width: 2px;
+  border-style: solid;;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 50px; 
+  width: 300px;
+  padding: 40px;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: #191919;
+  text-align: left;
 }
 
-.diseño table{
-  margin-left:auto;
-  margin-right: auto;
+.box h1{
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
-footer{
-  background-color: #B10101;
-  margin-top: 2%;
-}
-
-footer img{
-  width: 42px;
-  height: 40px;
-}
-
-.gmail img{
-  height: 30px;
-}
-
-.banner img{
-  width:99%;
-  height:74%;
+.box input[type = "text"],.box input[type = "password"]{
+  border:0;
+  background: none;
   display: block;
-  margin: auto;
+  margin: 20px auto;
+  text-align: left;
+  border: 2px solid #3498db;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+}
+.box input[type = "text"]:focus,.box input[type = "password"]:focus{
+  width: 280px;
+  border-color: #FF0000;
+}
+.box input[type = "submit"]{
+  border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: left;
+  border: 2px solid #FF0000;
+  padding: 14px 40px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
 }
 
-.precio {
-  color:red;
+.box input[type = "submit"]:hover{
+  background: #FF0000;
 }
-
-.diseño {
-   text-align: center;
-   font-size: 22px;
-}
-
-
-.foto img{
- width: 20rem; 
- height: 30rem;
- padding-left: 10em;
- padding-right: 10em;
-}
-
-.nombre{
-font-size: 25px;
-}
-
-
-
-
-

@@ -1,6 +1,6 @@
 {% extends 'base/base.html'%}
 
-{% block title %} admin {% endblock %}  
+{% block title %} crud {% endblock %}  
   {% block css%}
 <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style_crud.css')}}">
   {% endblock %}
@@ -49,9 +49,9 @@
   <form class="box" action="" method="post">
   <h1>CRUD DE VIDEO JUEGOS</h1>
   <button type="button"><a href="crear_game">Create video game</a></button>
-  <button type="button"><a href="ver_game">Watch video game</a></button>
+  <button type="button"><a href="buscar_game">Watch video game</a></button>
   <button type="button"><a href="">Modify video game</a></button>
-  <button type="button"><a href="">Delete video game</a></button>
+  <button type="button"><a href="buscar_game_dos">Delete video game</a></button>
 </form>   
 </article>
 

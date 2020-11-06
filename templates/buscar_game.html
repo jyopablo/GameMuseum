@@ -1,0 +1,55 @@
+{% extends 'base/base.html'%}
+
+{% block title %} Search Video Game {% endblock %}  
+  {% block css%}
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style_buscar_game.css')}}">
+  {% endblock %}
+   
+
+  {% block js%}
+    
+  {% endblock %}
+
+
+{% block content%}
+<header>
+  <table>
+    <tr>
+      <td>
+       <img src="{{url_for('static', filename='img/Logo.png')}}" >  
+      </td>
+      <td>
+      <form method="post">
+        <input type="text" name="search1" placeholder="search">
+        <button type="submit" name="submit">search</button>
+      </form>  
+      </td>
+      <td>
+      <article class="sesion">
+      <button type="button"><a href="/">Sing of</a></button>
+      </article>
+      </td>
+    </tr>
+  </table>
+</header>
+
+<nav class="navigation">
+    <ul>
+      <li><a href="admin">Catalogo de Videojuegos</a></li>
+      <li><a href="biblioteca">Mi Bliblioteca</a></li>
+      <li><a href="perfil_admin">Perfil</a></li>
+      <li><a href="carga_masiva">Carga Masiva</a></li>
+      <li><a href="crud">CRUD de Videojuegos</a></li>
+      <li><a href="perfil">Generar Reportes</a></li>
+      <li><a href="perfil">Crear Usuario</a></li>
+    </ul>
+  </nav>
+
+
+  <form class="box" action="" method="POST" >
+    <h1>Search Video Game</h1>
+    <input type="text" name="search2" placeholder="search">
+    <input type="submit" name="submit" placeholder="search" value="Search">
+  </form>
+
+{% endblock %}

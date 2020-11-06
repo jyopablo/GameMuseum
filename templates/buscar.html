@@ -1,8 +1,8 @@
 {% extends 'base/base.html'%}
 
-{% block title %} watch video game {% endblock %}  
+{% block title %} index2 {% endblock %}  
   {% block css%}
-<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style_ver_game.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style_buscar.css')}}">
   {% endblock %}
    
 
@@ -19,10 +19,10 @@
        <img src="{{url_for('static', filename='img/Logo.png')}}" >  
       </td>
       <td>
-      <form method="post">
+      <form>
         <input type="text" name="search" placeholder="search">
         <button type="submit" name="submit">search</button>
-      </form>  
+        </form>  
       </td>
       <td>
       <article class="sesion">
@@ -35,31 +35,27 @@
 
 <nav class="navigation">
     <ul>
-      <li><a href="admin">Catalogo de Videojuegos</a></li>
+      <li><a href="index2">Catalogo de Videojuegos</a></li>
       <li><a href="biblioteca">Mi Bliblioteca</a></li>
-      <li><a href="perfil_admin">Perfil</a></li>
-      <li><a href="carga_masiva">Carga Masiva</a></li>
-      <li><a href="crud">CRUD de Videojuegos</a></li>
-      <li><a href="perfil">Generar Reportes</a></li>
-      <li><a href="perfil">Crear Usuario</a></li>
+      <li><a href="perfil_index2">Perfil</a></li>
     </ul>
   </nav>
 
 <article class="diseño">
   <table>
     <tr>
-    <td colspan="5" class="banner"><img src="{{banner}}"></td> 
+    <td colspan="5" class="banner"><img src="https://blogdesuperheroes.es/wp-content/plugins/BdSGallery/BdSGaleria/48405.jpg"></td> 
     </tr>
     <tr>  
-    <td  class="nombre"> {{name}} </td> 
-    <td>id:{{id_game}}</td>
-    <td class="año">{{anio}}</td>
-    <td class="precio">Q{{precio}}</td>
-    <td>{{category}}</td>
+    <td  class="nombre"> Mario Bros </td> 
+    <td>ID:1</td>
+    <td>1994</td>
+    <td class="precio">Q700.00</td>
+    <td>Categoria:Accion</td>
     </tr>
     <tr>
-    <td class="foto"><img src="{{foto}}"></td>
-    <td colspan="4">{{description}}</td>  
+    <td class="foto"><img src="https://images-na.ssl-images-amazon.com/images/I/51CYsWY%2B1tL._AC_SY445_.jpg"></td>
+    <td colspan="4">Súper Hermanos Mario) es un videojuego de plataformas, diseñado por Shigeru Miyamoto, lanzado el 13 de septiembre de 1985 y producido por la compañía Nintendo, para la consola Nintendo Entertainment System (NES). El juego describe las aventuras de los hermanos Mario y Luigi, personajes que ya protagonizaron el arcade Mario Bros. de 1983. En esta ocasión ambos deben rescatar a la Princesa Peach del Reino Champiñón que fue secuestrada por el rey de los Koopas, Bowser. A través de ocho diferentes mundos, los jugadores pueden controlar a alguno de los dos hermanos y deben enfrentarse finalmente tras los niveles correspondientes de cada mundo a los monstruos de cada castillo para rescatar a la Princesa Peach.</td>  
     </tr>
   </table>
 </article>
@@ -88,6 +84,5 @@
   </tr>
   </table>
 </footer>
-
 
 {% endblock %}
