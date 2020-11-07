@@ -1,8 +1,8 @@
 {% extends 'base/base.html'%}
 
-{% block title %} Profile {% endblock %}  
+{% block title %} index2 {% endblock %}  
   {% block css%}
-<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style_perfil_index2.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style_ver_game_index2.css')}}">
   {% endblock %}
    
 
@@ -19,13 +19,7 @@
        <img src="{{url_for('static', filename='img/Logo.png')}}" >  
       </td>
       <td>
-      <form>
-        <input type="text" name="search" placeholder="search">
-        <button type="submit" name="submit">search</button>
-        </form>  
-      </td>
-      <td>
-      <article class="sesion">
+       <article class="sesion">
       <button type="button"><a href="/">Sing of</a></button>
       </article>
       </td>
@@ -41,20 +35,40 @@
     </ul>
   </nav>
 
-<article>
-  <form class="box" action="" method="post">
-  <h1>Perfil</h1>
-  <input type="text" name="name" placeholder="name" required value={{name_index2}}>
-  <input type="text" name="surname" placeholder="surname" required value={{surname_index2}}><br>
-  <article id="user">
-  <input type="text" name="user" placeholder="user" required value={{user_index2}} readonly><br>
-  </article>
-  <input type="password" name="password" placeholder="password" required  value={{pasword_index2}}>
-  <input type="password" name="confirmpassword" placeholder="confirmpassword" required value={{pasword_index2}}>
-  <input type="submit" name="Login" value="To update" id="btnSumit">
-</form>
+<article class="diseño">
+  <table>
+    <tr>
+    <td colspan="5" class="banner"><img src="{{banner}}"></td> 
+    </tr>
+    <tr>  
+    <td  class="nombre"> {{name}} </td> 
+    <td class="año">{{anio}}</td>
+    <td class="precio">Q{{precio}}</td>
+    <td colspan="2">{{category}}</td>
+    </tr>
+    <tr>
+    <td class="foto"><img src="{{foto}}"></td>
+    <td colspan="4">{{description}}</td>  
+    </tr>
+    <tr>
+      <td colspan="5">Comentarios</td>
+    </tr>
+    <tr>
+      <td colspan="5" class="Comentarios">
+      <form method="post">
+      <input type="text" name="commentary" placeholder="commentary" value="{{user}}:">
+      <input type="submit" name="submit" value="Add">  
+      </form>  
+      </td>
+     <tr> 
+     <td colspan="5" class="lista">
+       {% for i in lista_comentarios %}
+            {{i}}<hr color=white>
+       {% endfor %}
+     </td>
+    </tr>
+  </table>
 </article>
-
 
 <footer>
   <table>
@@ -71,6 +85,7 @@
       <img src="{{url_for('static', filename='img/whatsapp.png')}}">
       +502 2419-0122
     </td>
+    
   </tr>
   <tr>
     <td class="gmail">

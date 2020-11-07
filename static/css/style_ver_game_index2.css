@@ -31,7 +31,7 @@ header a{
 }
 
 .sesion{
-  margin-left: 250px;
+  margin-left: 834px;
 }
 
 nav{
@@ -73,7 +73,7 @@ header input[type = "text"]:focus{
 }
 
 
-header input[type="submit"],button[type="button"]{
+header button[type="submit"],button[type="button"]{
   border:0;
   border-radius: 100px;
   background:none;
@@ -88,44 +88,86 @@ header input[type="submit"],button[type="button"]{
   margin: auto;
 }
 
-header input[type = "submit"]:hover,button[type="button"]:hover{
+header button[type = "submit"]:hover,button[type="button"]:hover{
  background: #FF0000;
 }
 
 
-#avatar table{
-   margin-left: 10rem;
-}
-
-#catalogo img{
-  width:200px;
-  height: 300px; 
-  margin-left:65px;
-  margin-top: 10px;
-  border:2px solid;
-  border-color: white;
-}
-
-#catalogo table{
-  border:2px solid;
-  border-color:black;
-}
-
-#catalogo td{
-  border:2px solid;
-  border-color: black;
-}
-
-.producto {
-  margin-right: 100px;
-  margin-left: 100px;
-  text-align: center;
+.diseño{
   color: white;
 }
 
+.diseño table{
+  margin-left:auto;
+  margin-right: auto;
+}
+
+.gmail img{
+  height: 30px;
+}
+
+.banner img{
+  width:99%;
+  height:74%;
+  display: block;
+  margin: auto;
+}
+
 .precio {
-  text-align: center;
-  color: red;
+  color:red;
+}
+
+.diseño {
+   text-align: center;
+   font-size: 22px;
+}
+
+
+.foto img{
+ width: 20rem; 
+ height: 30rem;
+ padding-left: 10em;
+ padding-right: 10em;
+}
+
+.nombre{
+font-size: 25px;
+}
+
+.Comentarios input[type="text"]{
+  border:0;
+  border-radius: 50px;
+  background:none;
+  border:3px solid #3498db;
+  color: white;
+  font-size: 20px;
+  width: 100%;
+  height: 100px;
+  outline: none;
+  transition: 0.25s;
+}
+
+.Comentarios input[type = "text"]:focus{
+ background-color:rgba(162,207,255,0.1); 
+}
+
+.Comentarios input[type="submit"],button[type="button"]{
+  border:0;
+  border-radius: 100px;
+  background:none;
+  border:3px solid #FF0000;
+  font-size: 20px;
+  color: white;
+  width: 100px;
+  height: 50px;
+  outline: none;
+  transition: 0.25s;
+  cursor: pointer;
+  margin: auto;
+}
+
+.Comentarios input[type = "submit"]:hover,button[type="button"]:hover{
+ background: #FF0000;
 }
 
 footer{

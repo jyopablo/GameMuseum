@@ -138,14 +138,7 @@ header button[type = "submit"]:hover,button[type="button"]:hover{
 }
 
 
-.diseño{
-  color: white;
-}
 
-.diseño table{
-  margin-left:auto;
-  margin-right: auto;
-}
 
 footer{
   background-color: #B10101;
@@ -155,6 +148,15 @@ footer{
 footer img{
   width: 42px;
   height: 40px;
+}
+
+.diseño{
+  color: white;
+}
+
+.diseño table{
+  margin-left:auto;
+  margin-right: auto;
 }
 
 .gmail img{

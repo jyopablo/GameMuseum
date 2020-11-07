@@ -12,6 +12,8 @@ users=['admin']
 paswords=['admin']
 keys=[0]
 
+id3=[0]
+Comments=['Muy bueno']
 
 id2=[]
 name_game=[]
@@ -27,9 +29,14 @@ app.config['UPLOAD_FOLDER']="./static/archivos"
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 #_______________________________________________Pagina principal o index___________________________________________________
-@app.route('/')
+@app.route('/',methods=['GET','POST'])
 def index():
-	return render_template('index.html')
+  if request.method=="POST":
+     flash('Welcom, you need to create an account to search video games')
+     return redirect('/')
+  else:   
+     return render_template('index.html')
+	
 
 #_________________________________________________________Login ___________________________________________________________
 @app.route('/login', methods=['GET','POST'])
@@ -138,12 +145,37 @@ def admin():
     else:          
       return render_template('admin.html')  
   except:
+    flash('The video game does not exist')
     return render_template('admin.html')  
     
 #_______________________________________________Pagina logeada de un usuario___________________________________________________
 @app.route('/index2',methods=['GET','POST'])
 def index2():
-   return render_template('index2.html')    
+ try:
+    if request.method=="POST":
+      search=request.form.get("search")
+      verificar1=name_game.count(search)
+      global id_ver,name_ver,anio_ver,precio_ver,category_ver,foto_ver,banner_ver,description_ver
+      if verificar1 != 0:
+        posicion1=name_game.index(search)
+        id_ver=id1[posicion1]
+        name_ver=name_game[posicion1]
+        anio_ver=anio_game[posicion1]
+        precio_ver=precio_game[posicion1]
+        category_ver=categoria_game[posicion1]
+        foto_ver=foto_game[posicion1]
+        banner_ver=banner_game[posicion1]
+        description_ver=descripcion_game[posicion1]
+        return redirect('ver_game_index')
+      else: 
+        flash('The video game does not exist')
+        return render_template('index2.html')  
+    else:          
+       return render_template('index2.html')  
+ except:
+      flash('The video game does not exist')
+      return render_template('index2.html') 
+      
 
 #_____________________________________________________Perfil de un usuario_________-________________________________________
 @app.route('/perfil_index2',methods=['GET','POST'])
@@ -481,6 +513,22 @@ def crear_usuario():
   
 #_______________________________________________Catalogo de videojuegos_______________________________________________________  
 
+  
+#_______________________________________________Ver Video juego en index2_________________________________________________________ 
+@app.route('/ver_game_index',methods=['GET','POST'])
+def ver_game_index():
+  try:
+    if request.method=="POST":
+       commentary=request.form.get("commentary")
+       id3.append(id_ver)
+       Comments.append(commentary)
+       return redirect('ver_game_index')
+    else:
+      return render_template('ver_game_index.html',id_game=id_ver,name=name_ver,anio=anio_ver,precio=precio_ver,category=category_ver,foto=foto_ver,
+      banner=banner_ver,description=description_ver,lista_comentarios=Comments,commentary_id=id3,user=users[token])
+  except:
+      return render_template('ver_game_index.html',id_game=id_ver,name=name_ver,anio=anio_ver,precio=precio_ver,category=category_ver,foto=foto_ver,
+      banner=banner_ver,description=description_ver,lista_comentarios=Comments,commentary_id=id3,user=users[token])   
 
 
 if __name__=='__main__':
