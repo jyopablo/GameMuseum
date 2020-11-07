@@ -1,8 +1,8 @@
 {% extends 'base/base.html'%}
 
-{% block title %} Search Video Game {% endblock %}  
+{% block title %} admin {% endblock %}  
   {% block css%}
-<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style_buscar_game.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style_perfil_admin.css')}}">
   {% endblock %}
    
 
@@ -20,7 +20,6 @@
       </td>
       <td>
       <form method="post">
-       
       </form>  
       </td>
       <td>
@@ -45,10 +44,16 @@
   </nav>
 
 
-  <form class="box" action="" method="POST" >
-    <h1>Search Video Game</h1>
-    <input type="text" name="search" placeholder="search">
-    <input type="submit" name="submit" placeholder="Delete" value="Delete">
-  </form>
+<form class="box" action="" method="post">
+  <h1>Create User</h1>
+  <input type="text" name="name" placeholder="name" required>
+  <input type="text" name="surname" placeholder="surname" required><br>
+  <article id="user">
+  <input type="text" name="user" placeholder="user" required><br>
+  </article>
+  <input type="password" name="password" placeholder="Password" required >
+  <input type="password" name="confirmpassword" placeholder="Confirm Password" required>
+  <input type="submit" name="Login" value="Create" id="btnSumit">
+</form>
 
 {% endblock %}

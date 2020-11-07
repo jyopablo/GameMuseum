@@ -10,6 +10,8 @@ names=['Usuario']
 surnames=['Maestro']
 users=['admin']
 paswords=['admin']
+keys=[0]
+
 
 id2=[]
 name_game=[]
@@ -42,8 +44,12 @@ def login():
        if U_login==True and P_login==True and user_login != None and pasword_login != None:
        	 global token
          if user_login=="admin" and pasword_login=="admin":
+          token=posicion
           flash('Bienvenido    '+user_login)
-          token=posicion 
+          return redirect(url_for('admin')) 
+         elif keys[posicion]==0:
+          token=posicion
+          flash('Bienvenido    '+user_login)
           return redirect(url_for('admin')) 
          else:
           token=posicion 	
@@ -76,6 +82,7 @@ def registrar():
               surnames.append(surname)
               users.append(user)
               paswords.append(pasword)
+              keys.append(1)
               ultimo=id1[-1]
               id1.append(ultimo+1)
               return redirect('login')          
@@ -107,9 +114,32 @@ def recuperar():
   except:
       return render_template('recuperar.html')
 #_______________________________________________Pagina logeada de un administrador___________________________________________________
-@app.route('/admin')
+@app.route('/admin',methods=['GET','POST'])
 def admin():
-    return render_template('admin.html') 
+  try:
+    if request.method=="POST":
+      search=request.form.get("search")
+      verificar1=name_game.count(search)
+      global id_ver,name_ver,anio_ver,precio_ver,category_ver,foto_ver,banner_ver,description_ver
+      if verificar1 != 0:
+        posicion1=name_game.index(search)
+        id_ver=id1[posicion1]
+        name_ver=name_game[posicion1]
+        anio_ver=anio_game[posicion1]
+        precio_ver=precio_game[posicion1]
+        category_ver=categoria_game[posicion1]
+        foto_ver=foto_game[posicion1]
+        banner_ver=banner_game[posicion1]
+        description_ver=descripcion_game[posicion1]
+        return redirect('ver_game')
+      else: 
+        flash('The video game does not exist')
+        return render_template('admin.html')  
+    else:          
+      return render_template('admin.html')  
+  except:
+    return render_template('admin.html')  
+    
 #_______________________________________________Pagina logeada de un usuario___________________________________________________
 @app.route('/index2',methods=['GET','POST'])
 def index2():
@@ -197,9 +227,33 @@ def perfil_admin():
       return render_template('perfil_admin.html',user_admin=user_perfil_admin,surname_admin=surname_perfil_admin,
       name_admin=name_perfil_admin,pasword_admin=pasword_perfil_admin)          
 
-@app.route('/crud')
+#_______________________________________________CRUD DE VIDEO JUEGO___________________________________________________
+@app.route('/crud',methods=['GET','POST'])
 def crud():
-      return render_template('crud.html')
+   try:
+    if request.method=="POST":
+      search=request.form.get("search")
+      verificar1=name_game.count(search)
+      global id_ver,name_ver,anio_ver,precio_ver,category_ver,foto_ver,banner_ver,description_ver
+      if verificar1 != 0:
+        posicion1=name_game.index(search)
+        id_ver=id1[posicion1]
+        name_ver=name_game[posicion1]
+        anio_ver=anio_game[posicion1]
+        precio_ver=precio_game[posicion1]
+        category_ver=categoria_game[posicion1]
+        foto_ver=foto_game[posicion1]
+        banner_ver=banner_game[posicion1]
+        description_ver=descripcion_game[posicion1]
+        return redirect('ver_game')
+      else: 
+        flash('The video game does not exist')
+        return render_template('crud.html')  
+    else:          
+       return render_template('crud.html')  
+   except:
+      return render_template('crud.html') 
+      
 
 #_______________________________________________crear un video juego___________________________________________________
 @app.route("/crear_game", methods=["GET", "POST"])
@@ -234,6 +288,7 @@ def crear_game():
                 flash('The video game has been created')
                 return redirect(url_for('crud'))
             else:
+                flash('Fill in all the fields')
                 return render_template("crear_game.html")
         else:    
              return render_template("crear_game.html")      
@@ -256,7 +311,28 @@ def uploader():
         f = request.files["archive"]
         filename = secure_filename(f.filename)
         f.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
-        return "Archivo subido exitosamente"
+        with open('./static/archivos/'+filename) as csvfile:
+           reader =csv.reader(csvfile)
+           for row in reader:
+               if id2:
+                   verificar=True
+               else: 
+                   verificar=False
+
+               if verificar==True:   
+                   ultimo=id2[-1]
+                   id2.append(ultimo+1)
+               else:
+                   id2.append(0)
+               name_game.append(row[0])
+               anio_game.append(row[1])
+               precio_game.append(row[2])
+               categoria_game.append(row[3]+", "+row[4]+","+row[5])
+               foto_game.append(row[6])
+               banner_game.append(row[7])
+               descripcion_game.append(row[8])
+        flash('Successful file')       
+        return redirect("admin")
 #_______________________________________________Buscar video juego_______________________________________________________
 @app.route('/buscar_game', methods=['GET','POST'])
 def buscar_game():
@@ -283,8 +359,64 @@ def buscar_game():
 			return render_template('buscar_game.html') 
 	except:
 		return render_template('buscar_game.html')	
-#_______________________________________________Modificar video Game_______________________________________________________
-
+#_______________________________________________Buscar video juego para modificar_______________________________________________________
+@app.route('/buscar_game_tres', methods=['GET','POST'])
+def buscar_game_tres():
+  try:
+    if request.method=="POST":
+      search=request.form.get("search")
+      verificar1=name_game.count(search)
+      global id_ver,name_ver,anio_ver,precio_ver,category_ver,foto_ver,banner_ver,description_ver
+      if verificar1 != 0:
+        posicion_mod=name_game.index(search)
+        id_ver=id1[posicion_mod]
+        name_ver=name_game[posicion_mod]
+        anio_ver=anio_game[posicion_mod]
+        precio_ver=precio_game[posicion_mod]
+        category_ver=categoria_game[posicion_mod]
+        foto_ver=foto_game[posicion_mod]
+        banner_ver=banner_game[posicion_mod]
+        description_ver=descripcion_game[posicion_mod]
+        return redirect('modificar_game')
+      else: 
+        flash('The video game does not exist')
+        return render_template('buscar_game_tres.html') 
+    else:          
+      return render_template('buscar_game_tres.html') 
+  except:
+    return render_template('buscar_game_tres.html')
+#_______________________________________________Modificar video juego_______________________________________________________
+@app.route("/modificar_game", methods=["GET", "POST"])
+def modificar_game():
+    try:
+        if request.method == "POST":
+            name = request.form.get("name")
+            year = request.form.get("year")
+            price = request.form.get("price")
+            category = request.form.get("category")
+            url = request.form.get("url")
+            banner = request.form.get("banner")
+            description = request.form.get("description")
+            if  name != None and year != None and price != None and url != None and description != None:
+                name_game[id_ver]=name
+                anio_game[id_ver]=year
+                precio_game[id_ver]=price
+                categoria_game[id_ver]=category
+                foto_game[id_ver]=url
+                banner_game[id_ver]=banner
+                descripcion_game[id_ver]=description
+                flash('The video game has been modify')
+                return redirect('crud')
+            else:
+                flash('Fill in all the fields')
+                return render_template('modificar_game.html',name=name_ver,anio=anio_ver,precio=precio_ver,category=category_ver,foto=foto_ver,
+                banner=banner_ver,description=description_ver) 
+        else:
+             return render_template('modificar_game.html',name=name_ver,anio=anio_ver,precio=precio_ver,category=category_ver,foto=foto_ver,
+             banner=banner_ver,description=description_ver)    
+    except:
+         return render_template('modificar_game.html',name=name_ver,anio=anio_ver,precio=precio_ver,category=category_ver,foto=foto_ver,
+         banner=banner_ver,description=description_ver) 
 
 
 #_______________________________________________Eliminar video  Game_______________________________________________________
@@ -294,7 +426,6 @@ def buscar_game_dos():
 		if request.method=="POST":
 			search=request.form.get("search")
 			verificar=name_game.count(search)
-			global id_ver,name_ver,anio_ver,precio_ver,category_ver,foto_ver,banner_ver,description_ver
 			if verificar != 0:
 				posicion1=name_game.index(search)
 				id1.pop(posicion1)
@@ -314,6 +445,41 @@ def buscar_game_dos():
 			return render_template('buscar_game_dos.html') 
 	except:
 		return render_template('buscar_game_dos.html')
+
+#_______________________________________________Crear usuario adminitrador_______________________________________________________
+@app.route('/crear_usuario', methods=['GET','POST'])
+def crear_usuario():
+  try:
+    if request.method=="POST":
+      name=request.form.get("name")
+      surname=request.form.get("surname")
+      user=request.form.get("user")
+      pasword=request.form.get("password")
+      confirmpassword=request.form.get("confirmpassword")
+      verificar=users.count(user)
+      if verificar==0 and name != None and surname != None and user != None and pasword != None and confirmpassword != None :
+           if confirmpassword==pasword:
+              flash('User Registered ') 
+              names.append(name)
+              surnames.append(surname)
+              users.append(user)
+              paswords.append(pasword)
+              keys.append(0)
+              ultimo=id1[-1]
+              id1.append(ultimo+1)
+              return redirect('admin')          
+           else:
+              return flash('User or Confirm of Password, Incorrect') 
+              return render_template('crear_usuario.html')
+      else:
+        return render_template('crear_usuario.html')
+    else: 
+      return render_template('crear_usuario.html')    
+  except:
+      return flash('User or Confirm of Password, Incorrect')  
+      return render_template('crear_usuario.html')
+  
+#_______________________________________________Catalogo de videojuegos_______________________________________________________  
 
 
 

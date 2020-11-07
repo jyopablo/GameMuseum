@@ -1,8 +1,8 @@
 body{
-	  background-color: black;
-	  margin: 0;
+    background-color: black;
+    margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: georgia, times, serif;
     font-size: 1.2rem;
     line-height: 1.6em;
 }
@@ -25,7 +25,7 @@ header a{
 }
 
 header img{
-	width: 200px;
+  width: 200px;
   height: 200px;
 }
 
@@ -71,7 +71,7 @@ header input[type = "text"]:focus{
 }
 
 
-header button[type="submit"],button[type="button"]{
+header input[type="submit"],button[type="button"]{
   border:0;
   border-radius: 100px;
   background:none;
@@ -86,12 +86,12 @@ header button[type="submit"],button[type="button"]{
   margin: auto;
 }
 
-header button[type = "submit"]:hover,button[type="button"]:hover{
+header input[type = "submit"]:hover,button[type="button"]:hover{
  background: #FF0000;
 }
 
+
 .box{
-  font-family: sans-serif;
   border-color: #00FF78 #0096FF #FFF600 #FF00F6;
   border-width: 2px;
   border-style: solid;;
@@ -99,10 +99,10 @@ header button[type = "submit"]:hover,button[type="button"]:hover{
   border-top-right-radius: 100px;
   border-bottom-left-radius: 100px;
   border-bottom-right-radius: 50px; 
-  width: 500px;
+  width: 600px;
   padding: 40px;
   position: absolute;
-  top: 100%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
   background: #191919;
@@ -117,8 +117,11 @@ header button[type = "submit"]:hover,button[type="button"]:hover{
 .box a{
   color:#3498db;
   text-decoration: none;
-  font-size: 1.4rem;
+  font-size: 12px;
 }
+
+
+
 
 .box input[type = "text"],.box input[type = "password"]{
   border:0;
@@ -127,7 +130,7 @@ header button[type = "submit"]:hover,button[type="button"]:hover{
   text-align: left;
   border: 2px solid #3498db;
   padding: 14px 10px;
-  width: 400px;
+  width: 200px;
   outline: none;
   color: white;
   border-radius: 50px;
@@ -144,7 +147,7 @@ width: 440px;
 
 
 .box input[type = "submit"]{
-  width: 270px;
+  width: 450px;
   border:0;
   background: none;
   display: block;
@@ -160,18 +163,4 @@ width: 440px;
 }
 .box input[type = "submit"]:hover{
   background: #FF0000;
-}
-
-footer{
-  background-color: #B10101;
-  margin-top: 55%;
-}
-
-footer img{
-  width: 42px;
-  height: 40px;
-}
-
-.gmail img{
-  height: 30px;
 }
