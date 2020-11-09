@@ -1,8 +1,8 @@
 {% extends 'base/base.html'%}
 
-{% block title %} Search Video Game {% endblock %}  
+{% block title %} Carga de datos {% endblock %}  
   {% block css%}
-<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style_buscar_game.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style_reportes.css')}}">
   {% endblock %}
    
 
@@ -19,9 +19,6 @@
        <img src="{{url_for('static', filename='img/Logo.png')}}" >  
       </td>
       <td>
-      <form method="post">
-       
-      </form>  
       </td>
       <td>
       <article class="sesion">
@@ -44,11 +41,12 @@
     </ul>
   </nav>
 
-
-  <form class="box" action="" method="POST" >
-    <h1>Search Video Game</h1>
-    <input type="text" name="search" placeholder="search">
-    <input type="submit" name="submit" placeholder="Delete" value="Delete">
+<article>
+  <form class="box"  method="POST">
+    <h1>Reportes</h1>
+    <button type="submit"><a href="tabla_games">Table Video Games</a></button>
+    <button type="submit"><a href="tabla_usuarios">Table Users</a></button>
+    <button type="submit"><a href="tabla_comentarios">Table Users</a></button>
   </form>
-
+</article>
 {% endblock %}

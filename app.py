@@ -13,7 +13,7 @@ paswords=['admin']
 keys=[0]
 
 id3=[0]
-Comments=['Muy bueno']
+Comments=['admin:Muy bueno']
 
 id2=[]
 name_game=[]
@@ -23,6 +23,8 @@ categoria_game=[]
 foto_game=[]
 banner_game=[]
 descripcion_game=[]
+
+name_comments=['Mario']
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER']="./static/archivos"
@@ -349,18 +351,18 @@ def uploader():
         with open('./static/archivos/'+filename) as csvfile:
            reader =csv.reader(csvfile)
            for row in reader:
-               if id2:
-                   verificar=True
-               else: 
-                   verificar=False
+               if conta==1:  
+                  if id2:
+                     verificar=True
+                  else: 
+                     verificar=False
                
-               if verificar==True:   
-                   ultimo=id2[-1]
-                   id2.append(ultimo+1)
-               else:
-                   id2.append(0)
+                  if verificar==True:   
+                     ultimo=id2[-1]
+                     id2.append(ultimo+1)
+                  else:
+                     id2.append(0)  
 
-               if conta==1:    
                   name_game.append(row[0])
                   anio_game.append(row[1])
                   precio_game.append(row[2])
@@ -530,7 +532,9 @@ def crear_usuario():
       return render_template('crear_usuario.html')
   
 #_______________________________________________Catalogo de videojuegos_______________________________________________________  
-
+@app.route('/reportes',methods=['GET','POST'])
+def reportes():
+     return render_template('reportes.html')
   
 #_______________________________________________Ver Video juego en index2_________________________________________________________ 
 @app.route('/ver_game_index',methods=['GET','POST'])
@@ -539,6 +543,7 @@ def ver_game_index():
     if request.method=="POST":
        commentary=request.form.get("commentary")
        id3.append(id_ver)
+       name_comments.append(name_ver)
        Comments.append(commentary)
        return redirect('ver_game_index')
     else:
@@ -548,6 +553,22 @@ def ver_game_index():
       return render_template('ver_game_index.html',id_game=id_ver,name=name_ver,anio=anio_ver,precio=precio_ver,category=category_ver,foto=foto_ver,
       banner=banner_ver,description=description_ver,lista_comentarios=Comments,commentary_id=id3,user=users[token],tamaño=len(id3))   
 
+#_______________________________________________Ver Video juego en index2_________________________________________________________ 
+@app.route('/tabla_games',methods=['GET','POST'])
+def tabla_games():
+  return render_template('tabla_games.html',tamaño=len(id2),id2=id2,name_game=name_game,anio_game=anio_game,
+    precio_game=precio_game,categoria_game=categoria_game,foto_game=foto_game,banner_game=banner_game,descripcion_game=descripcion_game)
+
+#_______________________________________________Ver Video juego en index2_________________________________________________________ 
+@app.route('/tabla_usuarios',methods=['GET','POST'])
+def tabla_usuarios():
+  return render_template('tabla_usuarios.html',tamaño=len(id1),id1=id1,names=names,surnames=surnames,
+  users=users,paswords=paswords,keys=keys)
+
+#_______________________________________________Ver Video juego en index2_________________________________________________________
+@app.route('/tabla_comentarios',methods=['GET','POST'])
+def tabla_comentarios():
+  return render_template('tabla_comentarios.html',tamaño=len(id3),id3=id3,Comments=Comments,name_comments=name_comments)
 
 if __name__=='__main__':
     app.run(threaded=True,debug=True,port=8000)	

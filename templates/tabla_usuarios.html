@@ -1,0 +1,46 @@
+{% extends 'base/base.html'%}
+
+{% block title %} admin {% endblock %}  
+  {% block css%}
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style_tabla_users.css')}}">
+  {% endblock %}
+   
+
+  {% block js%}
+    
+  {% endblock %}
+
+
+{% block content%}
+
+<article class="datos">
+<table>
+  <tr>
+    <td>ID</td>
+    <td>Nombre</td>
+    <td>Apellido</td>
+    <td>Usuario</td>
+    <td>Contraseña</td>
+    <td>Rol</td>
+  </tr>
+  {% for i in range(0,tamaño) %}
+  <tr>
+    <td>{{id1[i]}}</td>
+    <td>{{names[i]}}</td>
+    <td>{{surnames[i]}}</td>
+    <td>{{users[i]}} </td>
+    <td>{{paswords[i]}}</td>
+    <td>
+    {%if keys[i]==1 %}
+       Usuario  
+    {% endif %}
+    {%if keys[i]==0 %}
+      Usuario Administrador
+    {% endif %}
+    </td>
+  </tr>  
+  {% endfor %}
+</table>
+</article>
+
+{% endblock %}
