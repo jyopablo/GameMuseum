@@ -94,8 +94,10 @@ def registrar():
               id1.append(ultimo+1)
               return redirect('login')          
            else:
+              return flash('User or Confirm of Password, Incorrect') 
               return render_template('registrar.html')
       else:
+        return flash('Existing user') 
         return render_template('registrar.html')
     else:
       return render_template('registrar.html')    
@@ -141,12 +143,12 @@ def admin():
         return redirect('ver_game')
       else: 
         flash('The video game does not exist')
-        return render_template('admin.html')  
+        return render_template('admin.html',id2=id2,tamaño=len(id2),foto_game=foto_game,precio_game=precio_game,name_game=name_game)  
     else:          
-      return render_template('admin.html')  
+      return render_template('admin.html',id2=id2,tamaño=len(id2),foto_game=foto_game,precio_game=precio_game,name_game=name_game)  
   except:
-    flash('The video game does not exist')
-    return render_template('admin.html')  
+    flash('The video game does not exist',id2=id2,tamaño=len(id2),foto_game=foto_game,precio_game=precio_game,name_game=name_game)
+    return render_template('admin.html',id2=id2,tamaño=len(id2),foto_game=foto_game,precio_game=precio_game,name_game=name_game)  
     
 #_______________________________________________Pagina logeada de un usuario___________________________________________________
 @app.route('/index2',methods=['GET','POST'])
@@ -177,7 +179,7 @@ def index2():
       return render_template('index2.html') 
       
 
-#_____________________________________________________Perfil de un usuario_________-________________________________________
+#_____________________________________________________Perfil de un usuario__________________________________________________
 @app.route('/perfil_index2',methods=['GET','POST'])
 def perfil_index2():
   try:
@@ -343,6 +345,7 @@ def uploader():
         f = request.files["archive"]
         filename = secure_filename(f.filename)
         f.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+        conta=0
         with open('./static/archivos/'+filename) as csvfile:
            reader =csv.reader(csvfile)
            for row in reader:
@@ -350,19 +353,33 @@ def uploader():
                    verificar=True
                else: 
                    verificar=False
-
+               
                if verificar==True:   
                    ultimo=id2[-1]
                    id2.append(ultimo+1)
                else:
                    id2.append(0)
-               name_game.append(row[0])
-               anio_game.append(row[1])
-               precio_game.append(row[2])
-               categoria_game.append(row[3]+", "+row[4]+","+row[5])
-               foto_game.append(row[6])
-               banner_game.append(row[7])
-               descripcion_game.append(row[8])
+
+               if conta==1:    
+                  name_game.append(row[0])
+                  anio_game.append(row[1])
+                  precio_game.append(row[2])
+                  categoria_game.append(row[3]+", "+row[4]+","+row[5])
+                  foto_game.append(row[6])
+                  banner_game.append(row[7])
+                  descripcion_game.append(row[8])
+               else:
+                  global titutlo_ID,titutlo_Nombre,titutlo_anio,titutlo_precio,titutlo_categorias,titutlo_foto,titutlo_banner, titutlo_descripcion
+                  titutlo_ID=row[0]
+                  titutlo_Nombre=row[1]
+                  titutlo_anio=row[2]
+                  titutlo_precio=row[3]
+                  titutlo_categorias=(row[3]+", "+row[4]+","+row[5])
+                  titutlo_foto=row[6]
+                  titutlo_banner=row[7]
+                  titutlo_descripcion=row[8]
+                  conta=1
+
         flash('Successful file')       
         return redirect("admin")
 #_______________________________________________Buscar video juego_______________________________________________________
@@ -504,6 +521,7 @@ def crear_usuario():
               return flash('User or Confirm of Password, Incorrect') 
               return render_template('crear_usuario.html')
       else:
+        return flash('Existing user') 
         return render_template('crear_usuario.html')
     else: 
       return render_template('crear_usuario.html')    
@@ -525,10 +543,10 @@ def ver_game_index():
        return redirect('ver_game_index')
     else:
       return render_template('ver_game_index.html',id_game=id_ver,name=name_ver,anio=anio_ver,precio=precio_ver,category=category_ver,foto=foto_ver,
-      banner=banner_ver,description=description_ver,lista_comentarios=Comments,commentary_id=id3,user=users[token])
+      banner=banner_ver,description=description_ver,lista_comentarios=Comments,commentary_id=id3,user=users[token],tamaño=len(id3))
   except:
       return render_template('ver_game_index.html',id_game=id_ver,name=name_ver,anio=anio_ver,precio=precio_ver,category=category_ver,foto=foto_ver,
-      banner=banner_ver,description=description_ver,lista_comentarios=Comments,commentary_id=id3,user=users[token])   
+      banner=banner_ver,description=description_ver,lista_comentarios=Comments,commentary_id=id3,user=users[token],tamaño=len(id3))   
 
 
 if __name__=='__main__':

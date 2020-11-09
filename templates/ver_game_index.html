@@ -62,8 +62,10 @@
       </td>
      <tr> 
      <td colspan="5" class="lista">
-       {% for i in lista_comentarios %}
-            {{i}}<hr color=white>
+       {% for i in range(0,tamaño) %}
+           {% if commentary_id[i]==id_game %}
+              {{lista_comentarios[i]}}<hr color=white>
+           {% endif %}
        {% endfor %}
      </td>
     </tr>

@@ -89,3 +89,34 @@ header input[type="submit"],button[type="button"]{
 header input[type = "submit"]:hover,button[type="button"]:hover{
  background: #FF0000;
 }
+
+#catalogo img{
+  width:200px;
+  height: 300px; 
+  margin-left:65px;
+  margin-top: 10px;
+  border:2px solid;
+  border-color: white;
+}
+
+#catalogo table{
+  border:2px solid;
+  border-color:black;
+}
+
+#catalogo td{
+  border:2px solid;
+  border-color: black;
+}
+
+.producto {
+  margin-right: 100px;
+  margin-left: 100px;
+  text-align: center;
+  color: white;
+}
+
+.precio {
+  text-align: center;
+  color: red;
+}
